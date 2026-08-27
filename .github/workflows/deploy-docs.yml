@@ -7,10 +7,6 @@
 name: Update Antora UI Spring
 
 on:
-  push:
-    branches:
-      - main
-      - docs-build
   schedule:
     - cron: '0/5 * * * *'
   workflow_dispatch:
