@@ -10,6 +10,7 @@ on:
   push:
     branches:
       - main
+      - docs-build
   schedule:
     - cron: '0/5 * * * *'
   workflow_dispatch:
@@ -22,18 +23,18 @@ permissions:
 jobs:
   update-antora-ui-spring:
     name: Update on Supported Branches
-    if: ${{ github.repository_owner == 'ngocnhan-tran1996' }}
+    if: ${{ github.repository == 'ngocnhan-tran1996/spring-cloud-commons' }}
     runs-on: ubuntu-latest
     steps:
       - uses: spring-io/spring-doc-actions/update-antora-spring-ui@415e2b11a766ba64799fffb5c97a4f7e17f677cf # v0.0.22
         name: Update
         with:
-          docs-branch: ${{ inputs.branch }}
+          docs-branch: main
           token: ${{ secrets.GITHUB_TOKEN }}
           antora-file-path: 'docs/antora-playbook.yml'
   update-antora-ui-spring-docs-build:
     name: Update on docs-build
-    if: ${{ github.repository_owner == 'ngocnhan-tran1996' }}
+    if: ${{ github.repository == 'ngocnhan-tran1996/spring-cloud-commons' }}
     runs-on: ubuntu-latest
     steps:
       - uses: spring-io/spring-doc-actions/update-antora-spring-ui@415e2b11a766ba64799fffb5c97a4f7e17f677cf # v0.0.22
